@@ -1,6 +1,6 @@
 module PCLSearch
 
-export Search, getName, setSortedResults, getSortedResults, Octree
+export Search, getName, setSortedResults, getSortedResults, Octree, KdTree
 
 using LibPCL
 using PCLCommon
@@ -18,6 +18,7 @@ end
 
 cxx"""
 #include <pcl/search/octree.h>
+#include <pcl/search/kdtree.h>
 """
 
 import PCLCommon: setInputCloud, getInputCloud, getIndices
@@ -37,5 +38,10 @@ getIndices(s::Search) = icxx"$(s.handle)->getIndices();"
 @defpcltype Octree{T} <: Search "pcl::search::Octree"
 @defptrconstructor Octree{T}(v::AbstractFloat) "pcl::search::Octree"
 @defconstructor OctreeVal{T}(v::AbstractFloat) "pcl::search::Octree"
+
+@defpcltype KdTree{T} <: Search "pcl::search::KdTree"
+@defptrconstructor KdTree{T}(sorted::Bool=true) "pcl::search::KdTree"
+@defconstructor KdTreeVal{T}(sorted::Bool=true) "pcl::search::KdTree"
+
 
 end # module
