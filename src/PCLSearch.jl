@@ -1,7 +1,18 @@
+"""
+The **pcl_search** library provides methods for searching for nearest neighbors
+using different data structures.
+
+http://docs.pointclouds.org/trunk/group__search.html
+
+## Exports
+
+$(EXPORTS)
+"""
 module PCLSearch
 
 export Search, getName, setSortedResults, getSortedResults, Octree, KdTree
 
+using DocStringExtensions
 using LibPCL
 using PCLCommon
 using PCLKDTree
