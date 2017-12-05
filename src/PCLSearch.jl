@@ -34,7 +34,7 @@ cxx"""
 
 import PCLCommon: setInputCloud, getInputCloud, getIndices
 
-abstract Search
+abstract type Search end
 
 getName(s::Search) = bytestring(icxx"$(s.handle)->getName();")
 setSortedResults(s::Search, sorted::Bool) =
